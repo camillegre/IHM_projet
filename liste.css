@@ -1,0 +1,17 @@
+.fondListe{
+    -fx-background-color: #ebddc5;
+}
+
+.Titre{
+    -fx-font-size: 20 black;
+    -fx-padding: 5
+}
+
+.button1{
+    -fx-font: 22 arial;
+    -fx-base: #be0c0c;
+}
+
+.ligne1{
+    -fx-background-color: #be0c0c;
+}
