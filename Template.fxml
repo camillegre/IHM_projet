@@ -14,13 +14,13 @@
             <Font name="Cooper Black" size="24.0" />
          </font>
       </Label>
-      <ToolBar accessibleRole="CONTEXT_MENU" layoutY="61.0" prefHeight="80.0" prefWidth="600.0" styleClass="image_couleur_fond" stylesheets="@Bande1.css">
+      <ToolBar accessibleRole="CONTEXT_MENU" layoutY="61.0" prefHeight="80.0" prefWidth="600.0" styleClass="image_couleur_fond" stylesheets="@CSS.css">
         <items>
-            <Button fx:id="add_button" layoutX="60.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="119.0" styleClass="image_bouton_1" stylesheets="@Bande1.css" textFill="#030303" translateX="2.0" />
-          <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="61.0" styleClass="image_bouton_3" stylesheets="@Bande1.css" translateX="400.0" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="69.0" prefWidth="99.0" styleClass="image_bouton_2" stylesheets="@Bande1.css" translateX="60.0" />
+            <Button fx:id="add_button" layoutX="60.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="119.0" styleClass="image_bouton_1" stylesheets="@CSS.css" textFill="#030303" translateX="2.0" />
+          <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="61.0" styleClass="image_bouton_3" stylesheets="@CSS.css" translateX="400.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="69.0" prefWidth="99.0" styleClass="image_bouton_2" stylesheets="@CSS.css" translateX="60.0" />
         </items>
       </ToolBar>
-      <Pane fx:id="Central" layoutX="79.0" layoutY="154.0" prefHeight="502.0" prefWidth="442.0" />
+      <Pane fx:id="Central" layoutX="79.0" layoutY="133.0" prefHeight="502.0" prefWidth="442.0" />
    </children>
 </AnchorPane>
