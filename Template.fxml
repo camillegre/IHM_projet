@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <Label alignment="CENTER" layoutX="175.0" layoutY="14.0" text="Etudiant Master IDLS" textAlignment="JUSTIFY" underline="true">
          <font>
@@ -16,9 +16,9 @@
       </Label>
       <ToolBar accessibleRole="CONTEXT_MENU" layoutY="61.0" prefHeight="80.0" prefWidth="600.0" styleClass="image_couleur_fond" stylesheets="@CSS.css">
         <items>
-            <Button fx:id="add_button" layoutX="60.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="119.0" styleClass="image_bouton_1" stylesheets="@CSS.css" textFill="#030303" translateX="2.0" />
-          <Button mnemonicParsing="false" prefHeight="63.0" prefWidth="61.0" styleClass="image_bouton_3" stylesheets="@CSS.css" translateX="400.0" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="69.0" prefWidth="99.0" styleClass="image_bouton_2" stylesheets="@CSS.css" translateX="60.0" />
+            <Button fx:id="add_button" layoutX="60.0" mnemonicParsing="false" onAction="#addClick" prefHeight="66.0" prefWidth="119.0" styleClass="image_bouton_1" stylesheets="@CSS.css" textFill="#030303" translateX="2.0" />
+          <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyClick" prefHeight="63.0" prefWidth="61.0" styleClass="image_bouton_3" stylesheets="@CSS.css" translateX="400.0" />
+            <Button fx:id="listButton" alignment="CENTER" mnemonicParsing="false" onAction="#listClick" prefHeight="69.0" prefWidth="99.0" styleClass="image_bouton_2" stylesheets="@CSS.css" translateX="60.0" />
         </items>
       </ToolBar>
       <Pane fx:id="Central" layoutX="79.0" layoutY="133.0" prefHeight="502.0" prefWidth="442.0" />

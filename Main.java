@@ -19,7 +19,6 @@ import javafx.scene.Parent;
  */
 public class Main extends Application
 {
- 
     /**
      * The start method is the main entry point for every JavaFX application. 
      * It is called after the init() method has returned and after 
@@ -27,9 +26,11 @@ public class Main extends Application
      *
      * @param  stage the primary stage for this application.
      */
+ 
     @Override
     public void start(Stage stage) throws Exception
     {
+       
         // Building the FXML hierarchy
         Parent root = FXMLLoader.load(getClass().getResource("Template.fxml"));
         
@@ -44,5 +45,4 @@ public class Main extends Application
         stage.show();
 
     }
-
 }

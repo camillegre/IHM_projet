@@ -1,6 +1,4 @@
 
-
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,14 +23,24 @@ public class Controller
     
     @FXML
     private Label myLabel;
-    
+
     /**
      * This will be executed when the button is clicked
      * It increments the count by 1
      */
     @FXML
-    private void buttonClickList(ActionEvent event)
+    private void addClick(ActionEvent event)
     {
-        
+        System.out.println("Bouton pour l'ajout");
+    }
+    @FXML
+    private void listClick(ActionEvent event)
+    {
+        System.out.println("Bouton pour l'affichage des étudiants");
+    }
+    @FXML
+    private void modifyClick(ActionEvent event)
+    {
+        System.out.println("Bouton pour la modification");
     }
 }

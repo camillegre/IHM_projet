@@ -17,7 +17,7 @@ import javafx.scene.Parent;
  * @author Tortank
  * @version 22/03/2023
  */
-public class TestListe extends Application
+public class testlsite extends Application
 {
  
     /**
@@ -31,7 +31,7 @@ public class TestListe extends Application
     public void start(Stage stage) throws Exception
     {
         // Building the FXML hierarchy
-        Parent root = FXMLLoader.load(getClass().getResource("projet_liste.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Add_student.fxml"));
         
         // JavaFX must have a Scene (window content) inside a Stage (window)       
         Scene scene = new Scene (root);
