@@ -1,0 +1,29 @@
+.bande1{
+	background-color: rgb(245,0,0);
+}
+
+.image_couleur_fond{
+	-fx-base : #bb2719;
+}
+
+.image_bouton_1{
+	-fx-background-image : url("Bouton_add.png");
+	-fx-background-position: center center;
+	-fx-background-size: 119 63;
+	-fx-background-color : #bb2719;
+	-fx-border-style : none;
+}
+.image_bouton_2{
+	-fx-background-image : url("Liste.png");
+	-fx-background-position: center center;
+	-fx-background-color : #bb2719;
+	-fx-background-size: 99 69;
+	-fx-border-style : none;
+}
+.image_bouton_3{
+	-fx-background-image : url("Pencil.png");
+	-fx-background-position: center center;
+	-fx-background-color : #bb2719;
+	-fx-background-size: 61 63;
+	-fx-border-style : none;
+}
