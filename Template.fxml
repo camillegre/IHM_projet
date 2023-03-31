@@ -16,8 +16,8 @@
       </Label>
       <ToolBar accessibleRole="CONTEXT_MENU" layoutY="61.0" prefHeight="80.0" prefWidth="600.0" styleClass="image_couleur_fond" stylesheets="@CSS.css">
         <items>
-            <Button fx:id="add_button" layoutX="60.0" mnemonicParsing="false" onAction="#addClick" prefHeight="66.0" prefWidth="119.0" styleClass="image_bouton_1" stylesheets="@CSS.css" textFill="#030303" translateX="2.0" />
-          <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyClick" prefHeight="63.0" prefWidth="61.0" styleClass="image_bouton_3" stylesheets="@CSS.css" translateX="400.0" />
+            <Button fx:id="addstudent" layoutX="60.0" mnemonicParsing="false" onAction="#addClick" prefHeight="66.0" prefWidth="119.0" styleClass="image_bouton_1" stylesheets="@CSS.css" text="      " textFill="#030303" translateX="2.0" />
+          <Button fx:id="modifystudent" mnemonicParsing="false" onAction="#modifyClick" prefHeight="63.0" prefWidth="61.0" styleClass="image_bouton_3" stylesheets="@CSS.css" translateX="400.0" />
             <Button fx:id="listButton" alignment="CENTER" mnemonicParsing="false" onAction="#listClick" prefHeight="69.0" prefWidth="99.0" styleClass="image_bouton_2" stylesheets="@CSS.css" translateX="60.0" />
         </items>
       </ToolBar>
