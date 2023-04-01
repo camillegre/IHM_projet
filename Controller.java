@@ -91,4 +91,15 @@ public class Controller
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+     private void back(ActionEvent event) throws IOException
+    {
+        System.out.println("Bouton pour la modification");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Template.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }

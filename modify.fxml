@@ -28,42 +28,43 @@
       </ToolBar>
       <Pane fx:id="Central" layoutX="-1.0" layoutY="141.0" prefHeight="562.0" prefWidth="600.0">
          <children>
-            <Label layoutX="81.0" layoutY="35.0" text="Formulaire de modification d'informations d'un étudiant" textAlignment="CENTER">
+            <Label layoutX="46.0" layoutY="63.0" text="Formulaire de modification d'informations d'un étudiant" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
-            <Label layoutX="178.0" layoutY="113.0" text="NOM :" />
-            <Label layoutX="168.0" layoutY="156.0" text="Prénom :" />
-            <Label layoutX="112.0" layoutY="193.0" text="Date de naissance :" />
-            <Label layoutX="159.0" layoutY="235.0" text="Parcours :" />
-            <Label layoutX="150.0" layoutY="273.0" text="Promotion :" />
-            <Label layoutX="316.0" layoutY="194.0" text="/" />
-            <Label layoutX="370.0" layoutY="193.0" text="/" />
-            <MenuButton fx:id="menu_parcours" layoutX="270.0" layoutY="231.0" mnemonicParsing="false" text="Choisissez votre parcours">
+            <Label layoutX="201.0" layoutY="133.0" text="NOM :" />
+            <Label layoutX="191.0" layoutY="176.0" text="Prénom :" />
+            <Label layoutX="135.0" layoutY="213.0" text="Date de naissance :" />
+            <Label layoutX="182.0" layoutY="255.0" text="Parcours :" />
+            <Label layoutX="173.0" layoutY="293.0" text="Promotion :" />
+            <Label layoutX="339.0" layoutY="214.0" text="/" />
+            <Label layoutX="393.0" layoutY="213.0" text="/" />
+            <MenuButton fx:id="menu_parcours" layoutX="293.0" layoutY="251.0" mnemonicParsing="false" text="Choisissez votre parcours">
               <items>
                 <MenuItem mnemonicParsing="false" text="GPhy" />
                 <MenuItem mnemonicParsing="false" text="GCell" />
                   <MenuItem mnemonicParsing="false" text="ECMPS" />
               </items>
             </MenuButton>
-            <MenuButton fx:id="menu_promo" layoutX="266.0" layoutY="268.0" mnemonicParsing="false" text="Choisissez votre promotion">
+            <MenuButton fx:id="menu_promo" layoutX="289.0" layoutY="288.0" mnemonicParsing="false" text="Choisissez votre promotion">
               <items>
                 <MenuItem mnemonicParsing="false" text="M1" />
                 <MenuItem mnemonicParsing="false" text="M2" />
               </items>
             </MenuButton>
-            <Button fx:id="val_modif_button" layoutX="175.0" layoutY="353.0" mnemonicParsing="false" styleClass="button1" stylesheets="@modify.css" text="Valider les modifications" textFill="WHITE" />
+            <Button fx:id="val_modif_button" layoutX="228.0" layoutY="360.0" mnemonicParsing="false" styleClass="button1" stylesheets="@modify.css" text="Valider les modifications" textFill="WHITE" />
             <ImageView fx:id="univ_poitiers_image" fitHeight="92.0" fitWidth="162.0" layoutX="430.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <TextField layoutX="278.0" layoutY="109.0" />
-            <TextField layoutX="276.0" layoutY="147.0" />
-            <TextField layoutX="276.0" layoutY="189.0" prefHeight="26.0" prefWidth="35.0" />
-            <TextField layoutX="327.0" layoutY="190.0" prefHeight="26.0" prefWidth="35.0" />
-            <TextField layoutX="381.0" layoutY="189.0" prefHeight="26.0" prefWidth="54.0" />
+            <TextField layoutX="301.0" layoutY="129.0" />
+            <TextField layoutX="299.0" layoutY="167.0" />
+            <TextField layoutX="299.0" layoutY="209.0" prefHeight="26.0" prefWidth="35.0" />
+            <TextField layoutX="350.0" layoutY="210.0" prefHeight="26.0" prefWidth="35.0" />
+            <TextField layoutX="404.0" layoutY="209.0" prefHeight="26.0" prefWidth="54.0" />
+            <Button fx:id="add_button" layoutX="83.0" layoutY="459.0" mnemonicParsing="false" onAction="#back" text="Accueil" />
          </children></Pane>
    </children>
 </AnchorPane>
