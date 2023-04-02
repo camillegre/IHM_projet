@@ -38,6 +38,10 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import java.sql.*;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.time.LocalDateTime;
 
 /**
  * Write a description of JavaFX class StepTwoController here.
@@ -79,6 +83,7 @@ public class Controller
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+        afficheEtu();
     }
     @FXML
     private void modifyClick(ActionEvent event) throws IOException
@@ -101,5 +106,25 @@ public class Controller
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+    
+     public void afficheEtu()
+    {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            String sql = "SELECT * FROM Etu";
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:BDD.db");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                System.out.println(rs.getString("nom_etu"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close(); 
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

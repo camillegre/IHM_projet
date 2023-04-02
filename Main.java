@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import java.sql.*;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -44,5 +48,19 @@ public class Main extends Application
         // Show the Stage (window)
         stage.show();
 
+    }
+    
+    private static Connection connect(String location) {
+    String dbPrefix = "jdbc:sqlite:";
+    Connection connection;
+    try {
+        connection = DriverManager.getConnection(dbPrefix + location);
+    } catch (SQLException exception) {
+        Logger.getAnonymousLogger().log(Level.SEVERE,
+                LocalDateTime.now() + ": Could not connect to SQLite DB at " +
+                        location);
+        return null;
+    }
+    return connection;
     }
 }
