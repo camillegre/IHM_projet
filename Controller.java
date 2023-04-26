@@ -42,6 +42,12 @@ import java.sql.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.time.LocalDateTime;
+import javafx.scene.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javax.swing.Spring;
+import javafx.collections.ObservableList;
 
 /**
  * Write a description of JavaFX class StepTwoController here.
@@ -49,13 +55,30 @@ import java.time.LocalDateTime;
  * @author Patrick GIRARD
  * @version 22/03/2020
  */
-public class Controller
+public class Controller 
 {
     // We keep track of the count, and label displaying the count:
     
     @FXML
     private Label myLabel;
-
+    @FXML
+    private TableView<Etudiant> tableEtudiant = new TableView();
+    @FXML
+    private TableColumn<Etudiant, String> columnNom = new TableColumn();
+    @FXML
+    private TableColumn<Etudiant, String> columnPrenom = new TableColumn();
+    @FXML
+    private TableColumn<Etudiant, String> columnPromo = new TableColumn();
+    @FXML
+    private TableColumn<Etudiant, String> columnParcours = new TableColumn();
+    @FXML
+    private TableColumn<Etudiant, Integer> columnDDN = new TableColumn();
+    
+    private static ObservableList<Etudiant> listEtudiant;
+    
+    
+    
+    
     /**
      * This will be executed when the button is clicked
      * It increments the count by 1
@@ -83,7 +106,6 @@ public class Controller
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        afficheEtu();
     }
     @FXML
     private void modifyClick(ActionEvent event) throws IOException
@@ -95,6 +117,7 @@ public class Controller
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+        
     }
     @FXML
      private void back(ActionEvent event) throws IOException
@@ -108,16 +131,16 @@ public class Controller
         stage.show();
     }
     
-     public void afficheEtu()
+     public void getEtudiant()
     {
         try {
             Class.forName("org.sqlite.JDBC");
-            String sql = "SELECT * FROM Etu";
+            String sql = "SELECT * FROM Etudiant";
             Connection conn = DriverManager.getConnection("jdbc:sqlite:BDD.db");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                System.out.println(rs.getString("nom_etu"));
+                listEtudiant.add(new Etudiant(rs.getInt("Id_Etudiant"),rs.getString("Nom"),rs.getString("Prenom"),rs.getString("Promotion"),rs.getString("Parcours")));
             }
             rs.close();
             stmt.close();
@@ -126,5 +149,19 @@ public class Controller
         catch (Exception e) {
             e.printStackTrace();
         }
+        
+    }   
+    
+    public void Initialise(){
+        columnNom.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Nom"));
+        columnPrenom.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Prenom"));
+        columnPromo.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Promotion"));
+        columnParcours.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Parcours"));
     }
+    @FXML
+    public  void afficheListe(ActionEvent event) throws IOException{
+        Initialise();
+        getEtudiant();
+        tableEtudiant.setItems(listEtudiant);
+    }   
 }
