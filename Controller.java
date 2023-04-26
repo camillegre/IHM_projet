@@ -138,13 +138,12 @@ public class Controller
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        displayTable();
         stage.show();
         
     }
     @FXML
     private void refresh() throws SQLException{
-        displayTable();
+        initialiseListe();
     }
     @FXML
      private void back(ActionEvent event) throws IOException
@@ -157,7 +156,7 @@ public class Controller
         stage.setScene(scene);
         stage.show();
     }
-     private void displayTable() {
+     private void initialiseListe() {
         
         try{
             listEtudiant=FXCollections.observableArrayList(getEtudiant());
