@@ -24,5 +24,23 @@ public class Etudiant
         this.Promotion = Promo;
         this.Parcours = parcours;
     }
+    
+    public String getNom(){
+        return this.Nom;
+    }
+    public String getPrenom(){
+        return this.Prenom;
+    }
+    public String getPromo(){
+        return this.Promotion;
+    }
+    public String getParcours(){
+        return this.Parcours;
+    }
+    public String getId()
+    {
+       String idString=Integer.toString(Id_Etudiant);
+       return idString;
+    }
 
 }

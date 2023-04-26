@@ -48,6 +48,25 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javax.swing.Spring;
 import javafx.collections.ObservableList;
+import java.util.ArrayList;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.geometry.Insets;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.collections.ObservableList;
+import javafx.scene.control.*;
+import javafx.beans.property.*;
+import java.sql.*;
+import javafx.collections.*;
+import java.io.IOException;
+import javafx.scene.input.*;
+import javafx.scene.control.TableView;
 
 /**
  * Write a description of JavaFX class StepTwoController here.
@@ -63,6 +82,8 @@ public class Controller
     private Label myLabel;
     @FXML
     private TableView<Etudiant> tableEtudiant = new TableView();
+    @FXML
+    private TableColumn<Etudiant, String> columnID = new TableColumn();
     @FXML
     private TableColumn<Etudiant, String> columnNom = new TableColumn();
     @FXML
@@ -99,25 +120,31 @@ public class Controller
     private void listClick(ActionEvent event) throws IOException
     {
         System.out.println("Bouton pour l'affichage des étudiants");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("list_student.fxml"));
-        Parent root = loader.load();
-    
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    @FXML
-    private void modifyClick(ActionEvent event) throws IOException
-    {
-        System.out.println("Bouton pour la modification");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("modify.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("liste_etudiant.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
         
+    }
+    @FXML
+    private void modifyClick(ActionEvent event) throws IOException
+    {
+       
+        System.out.println("Bouton pour la modification");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("modify.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        displayTable();
+        stage.show();
+        
+    }
+    @FXML
+    private void refresh() throws SQLException{
+        displayTable();
     }
     @FXML
      private void back(ActionEvent event) throws IOException
@@ -130,9 +157,24 @@ public class Controller
         stage.setScene(scene);
         stage.show();
     }
-    
-     public void getEtudiant()
+     private void displayTable() {
+        
+        try{
+            listEtudiant=FXCollections.observableArrayList(getEtudiant());
+            columnID.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
+            columnNom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+            columnPrenom.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPrenom()));
+            columnParcours.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getParcours()));
+            columnPromo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPromo()));
+            tableEtudiant.setItems(listEtudiant);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+     public ArrayList<Etudiant> getEtudiant() throws SQLException
     {
+        ArrayList<Etudiant> listeEtudiant = new ArrayList();
+    
         try {
             Class.forName("org.sqlite.JDBC");
             String sql = "SELECT * FROM Etudiant";
@@ -140,7 +182,14 @@ public class Controller
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                listEtudiant.add(new Etudiant(rs.getInt("Id_Etudiant"),rs.getString("Nom"),rs.getString("Prenom"),rs.getString("Promotion"),rs.getString("Parcours")));
+                int id = rs.getInt("Id_Etudiant");
+                String Nom = rs.getString("Nom");
+                String Prenom = rs.getString("Prenom");
+                String Promo = rs.getString("Promotion");
+                String Parcours = rs.getString("Parcours");
+                System.out.println(Nom+Prenom);
+                Etudiant etu = new Etudiant(id,Nom,Prenom,Promo,Parcours);
+                listeEtudiant.add(etu);
             }
             rs.close();
             stmt.close();
@@ -149,19 +198,6 @@ public class Controller
         catch (Exception e) {
             e.printStackTrace();
         }
-        
-    }   
-    
-    public void Initialise(){
-        columnNom.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Nom"));
-        columnPrenom.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Prenom"));
-        columnPromo.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Promotion"));
-        columnParcours.setCellValueFactory(new PropertyValueFactory<Etudiant, String>("Parcours"));
-    }
-    @FXML
-    public  void afficheListe(ActionEvent event) throws IOException{
-        Initialise();
-        getEtudiant();
-        tableEtudiant.setItems(listEtudiant);
-    }   
+        return(listeEtudiant);
+    }  
 }
